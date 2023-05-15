@@ -7,4 +7,9 @@
 
 
 ## 2일차
+* 타임리프 레이아웃 템플릿 완성 
+* 스프링 시큐리티 설정
+* 관리자 페이지 
+	- 기본설정 
+	- 게시판 설정
 * <a href="https://drive.google.com/drive/folders/1Eu3wl9GIVdIxFUaxLTGVIAgqpr3ZsCZ0?usp=share_link">동영상 강의</a>
