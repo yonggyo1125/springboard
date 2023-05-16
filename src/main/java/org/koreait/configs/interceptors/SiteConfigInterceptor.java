@@ -9,6 +9,7 @@ import org.springframework.web.servlet.HandlerInterceptor;
  * 사이트 설정 유지
  *
  */
+@Component
 public class SiteConfigInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
