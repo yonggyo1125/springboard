@@ -5,16 +5,21 @@
     <main layout:fragment="content">
         <form name="frmLogin" method="post" th:action="@{/member/login}" autocomplete="off">
             <div>
-                <input type="text" name="userId" th:placeholder="#{userId}">
+                <input type="text" name="userId" th:placeholder="#{userId}" th:value="${session.userId}">
+                <div class="errors" th:if="${session.requiredUserId != null}" th:text="${session.requiredUserId}"></div>
             </div>
             <div>
                 <input type="password" name="userPw" th:placeholder="#{userPw}">
+                <div class="errors" th:if="${session.requiredUserPw != null}" th:text="${session.requiredUserPw}"></div>
             </div>
             <div>
                 <a th:href="@{/member/find_id}"><i class="xi-search"></i>[[#{findId}]]</a>
                 <a th:href="@{/member/find_pw}"><i class="xi-search"></i>[[#{findPw}]]</a>
                 <a th:href="@{/member/join}"><i class="xi-user-plus"></i>[[#{member.join}]]</a>
             </div>
+
+            <div class="errors global" th:if="${session.global != null}" th:text="${session.global}"></div>
+
             <button type="submit" th:text="#{member.action.login}"></button>
         </form>
     </main>

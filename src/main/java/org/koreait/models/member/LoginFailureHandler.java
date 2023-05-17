@@ -16,15 +16,20 @@ public class LoginFailureHandler implements AuthenticationFailureHandler {
         String userId = request.getParameter("userId");
         String userPw = request.getParameter("userPw");
 
+        session.removeAttribute("userId");
+        session.removeAttribute("requiredUserId");
+        session.removeAttribute("requiredUserPw");
+        session.removeAttribute("global");
+
         session.setAttribute("userId", userId);
 
         try {
-            if (userId == null || !userId.isBlank()) {
-                throw new LoginValidationException("userId", "NotBlank.userId");
+            if (userId == null || userId.isBlank()) {
+                throw new LoginValidationException("requiredUserId", "NotBlank.userId");
             }
 
-            if (userPw == null || !userPw.isBlank()) {
-                throw new LoginValidationException("userPw", "NotBlank.userPw");
+            if (userPw == null || userPw.isBlank()) {
+                throw new LoginValidationException("requiredUserPw", "NotBlank.userPw");
             }
 
             throw new LoginValidationException("global", "Validation.login.fail");
@@ -34,6 +39,5 @@ public class LoginFailureHandler implements AuthenticationFailureHandler {
         }
 
         response.sendRedirect(request.getContextPath() + "/member/login");
-
     }
 }
