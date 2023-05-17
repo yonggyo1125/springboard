@@ -11,9 +11,9 @@
                 <input type="password" name="userPw" th:placeholder="#{userPw}">
             </div>
             <div>
-                <a th:href="@{/member/find_id}">[[#{findId}]]</a>
-                <a th:href="@{/member/find_pw}">[[#{findPw}]]</a>
-                <a th:href="@{/member/join}">[[#{member.join}]]</a>
+                <a th:href="@{/member/find_id}"><i class="xi-search"></i>[[#{findId}]]</a>
+                <a th:href="@{/member/find_pw}"><i class="xi-search"></i>[[#{findPw}]]</a>
+                <a th:href="@{/member/join}"><i class="xi-user-plus"></i>[[#{member.join}]]</a>
             </div>
             <button type="submit" th:text="#{member.action.login}"></button>
         </form>
