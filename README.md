@@ -47,3 +47,12 @@
 	- @ExceptionHandler, @ControllerAdvice, @RestControllerAdvice
 	
 * <a href="https://drive.google.com/drive/folders/1zrk-y8QL5K8pUa7uJnKUfWY_AzHHlFRv?usp=share_link">동영상 강의</a>
+
+## 4일차
+* 공통 오류 페이지 처리 
+* 관리자페이지 
+	- 사이트 설정 
+	- 게시판 설정
+
+* <a href="https://drive.google.com/drive/folders/1zTuyIVdIy99BLSqrN5p1cDODtbmVUU7Q?usp=share_link">동영상 강의</a>
+
