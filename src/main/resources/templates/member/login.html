@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/front/main}">
+    <main layout:fragment="content">
+        <form name="frmLogin" method="post" th:action="@{/member/login}" autocomplete="off">
+            <div>
+                <input type="text" name="userId" th:placeholder="#{userId}">
+            </div>
+            <div>
+                <input type="password" name="userPw" th:placeholder="#{userPw}">
+            </div>
+            <div>
+                <a th:href="@{/member/find_id}">[[#{findId}]]</a>
+                <a th:href="@{/member/find_pw}">[[#{findPw}]]</a>
+                <a th:href="@{/member/join}">[[#{member.join}]]</a>
+            </div>
+            <button type="submit" th:text="#{member.action.login}"></button>
+        </form>
+    </main>
+</html>
