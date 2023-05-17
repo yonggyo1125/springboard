@@ -22,7 +22,6 @@ public class MemberController {
     @GetMapping("/join")
     public String join(@ModelAttribute JoinForm joinForm, Model model) {
 
-
         return "member/join";
     }
 
