@@ -3,13 +3,13 @@
     <aside th:fragment="menu">
         <ul>
             <li>
-                <a th:href="@{/admin/config}">
+                <a th:href="@{/admin/config}" th:classappend="${menuCode} == 'config' ? 'on'">
                     <i class="xi-cog"></i>
                     사이트 관리
                 </a>
             </li>
             <li>
-                <a th:href="@{/admin/board}">
+                <a th:href="@{/admin/board}" th:classappend="${menuCode} == 'board' ? 'on'">
                     <i class="xi-view-list"></i>
                     게시판 관리
                 </a>

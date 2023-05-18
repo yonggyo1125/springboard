@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/admin/main}">
+
+    <section layout:fragment="content">
+        <th:block th:replace="~{admin/commons/_message::message}"></th:block>
+
+        <h1 th:text="${title}"></h1>
+
+        <form name="frmSave" method="post" th:action="@{/admin/config}" autocomplete="off">
+            <table class="table-cols">
+                <tr>
+                    <th>사이트 제목</th>
+                    <td>
+                        <input type="text" name="siteTitle">
+                    </td>
+                </tr>
+                <tr>
+                    <th>사이트 설명</th>
+                    <td>
+                        <textarea name="siteDescription"></textarea>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </section>
+</html>

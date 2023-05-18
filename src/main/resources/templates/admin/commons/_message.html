@@ -1,0 +1,6 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <th:block th:fragment="message">
+        <div class='message' th:if="${message != null }" th:text="${message}"></div>
+    </th:block>
+</html>
