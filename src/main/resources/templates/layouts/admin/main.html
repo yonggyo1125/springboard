@@ -17,7 +17,10 @@
 </head>
 <body>
 <header th:replace="~{outlines/admin/header::common}"></header>
-<main layout:fragment="content"></main>
+<main>
+    <aside th:replace="~{outlines/admin/side::menu}"></aside>
+    <section layout:fragment="content"></section>
+</main>
 <footer th:replace="~{outlines/admin/footer::common}"></footer>
 <iframe name="ifrmProcess" class="dn"></iframe>
 </body>
