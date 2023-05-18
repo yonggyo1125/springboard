@@ -28,3 +28,16 @@ input[type='radio']+label { min-height: 24px; line-height: 1; padding: 3px 0 3px
 input[type='radio']:checked+label { background:url("../../images/radio-on.png") no-repeat left center; }
 
 .dn { display: none !important; }
+
+/** 기본 레이아웃 스타일 */
+header { height: 80px; background: #fff; }
+main { min-width: 1100px; min-height: 800px; display: flex; }
+main > aside { width: 208px; background: #596b99; }
+main > section { flex-grow: 1; }
+
+aside li > a { display: block; height: 71px; line-height: 71px; border-top: 1px solid #61729e; color: #dddee4; font-size: 18px; text-align: center; position: relative; }
+aside li > a * { color: #dddee4; font-size: 18px; }
+aside li > a:hover,
+aside li > a.on { background: #3c4e7a; font-weight: bold; }
+aside li > a:hover:after,
+aside li > a.on:after { content: ''; display: block; position: absolute; width: 8px; height: 100%; right: 0; top: 0; background: #00d0d7; }
