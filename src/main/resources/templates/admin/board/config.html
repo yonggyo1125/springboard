@@ -6,6 +6,126 @@
     <h1 th:text="${title}"></h1>
     <form name="frmSave" method="post" th:action="@{/admin/board/save}" autocomplete="off">
         <h2>일반설정</h2>
+        <table class="table-cols">
+            <tr>
+                <th>게시판 ID</th>
+                <td>
+                    <input type="text" name="bId">
+                </td>
+            </tr>
+            <tr>
+                <th>게시판명</th>
+                <td>
+                    <input type="text" name="bName">
+                </td>
+            </tr>
+            <tr>
+                <th>사용여부</th>
+                <td>
+                    <input type="radio" name="use" value="true" id="use_true">
+                    <label for="use_true">사용</label>
+
+                    <input type="radio" name="use" value="false" id="use_false">
+                    <label for="use_false">미사용</label>
+                </td>
+            </tr>
+            <tr>
+                <th>1페이지 게시글 수</th>
+                <td>
+                    <input type="number" name="rowsOfPage">
+                </td>
+            </tr>
+            <tr>
+                <th>게시글 하단 목록</th>
+                <td>
+                    <input type="radio" name="showViewList" value="true" id="showViewList_true">
+                    <label for="showViewList_true">사용</label>
+
+                    <input type="radio" name="showViewList" value="false" id="showViewList_false">
+                    <label for="showViewList_false">미사용</label>
+                </td>
+            </tr>
+        </table>
+
+        <h2>분류 설정</h2>
+        <table class="table-cols">
+            <tr>
+                <th>분류</th>
+                <td>
+                    <textarea name="category" placeholder="분류가 여러개인 경우 엔터키를 눌러 줄개행하여 입력하세요..."></textarea>
+                </td>
+            </tr>
+        </table>
+
+        <h2>권한 설정</h2>
+        <table class="table-cols">
+            <tr>
+                <th>목록</th>
+                <td>
+                    <input type="radio" name="listAccessRole" value="ALL" id="listAccessRole_ALL">
+                    <label for="listAccessRole_ALL">전체(비회원+회원+관리자)</label>
+
+                    <input type="radio" name="listAccessRole" value="USER" id="listAccessRole_USER">
+                    <label for="listAccessRole_USER">회원</label>
+
+                    <input type="radio" name="listAccessRole" value="ADMIN" id="listAccessRole_ADMIN">
+                    <label for="listAccessRole_ADMIN">관리자</label>
+                </td>
+            </tr>
+            <tr>
+                <th>글보기</th>
+                <td>
+                    <input type="radio" name="viewAccessRole" value="ALL" id="viewAccessRole_ALL">
+                    <label for="viewAccessRole_ALL">전체(비회원+회원+관리자)</label>
+
+                    <input type="radio" name="viewAccessRole" value="USER" id="viewAccessRole_USER">
+                    <label for="listAccessRole_USER">회원</label>
+
+                    <input type="radio" name="viewAccessRole" value="ADMIN" id="viewAccessRole_ADMIN">
+                    <label for="listAccessRole_ADMIN">관리자</label>
+
+                </td>
+            </tr>
+            <tr>
+                <th>글쓰기</th>
+                <td>
+                    <input type="radio" name="writeAccessRole" value="ALL" id="writeAccessRole_ALL">
+                    <label for="writeAccessRole_ALL">전체(비회원+회원+관리자)</label>
+
+                    <input type="radio" name="writeAccessRole" value="USER" id="writeAccessRole_USER">
+                    <label for="writeAccessRole_USER">회원</label>
+
+                    <input type="radio" name="writeAccessRole" value="ADMIN" id="writeAccessRole_ADMIN">
+                    <label for="writeAccessRole_ADMIN">관리자</label>
+                </td>
+            </tr>
+            <tr>
+                <th>답글</th>
+                <td>
+                    <input type="radio" name="replyAccessRole" value="ALL" id="replyAccessRole_ALL">
+                    <label for="replyAccessRole_ALL">전체(비회원+회원+관리자)</label>
+
+                    <input type="radio" name="replyAccessRole" value="USER" id="replyAccessRole_USER">
+                    <label for="replyAccessRole_USER">회원</label>
+
+                    <input type="radio" name="replyAccessRole" value="ADMIN" id="replyAccessRole_ADMIN">
+                    <label for="replyAccessRole_ADMIN">관리자</label>
+                </td>
+            </tr>
+            <tr>
+                <th>댓글</th>
+                <td>
+                    <input type="radio" name="commentAccessRole" value="ALL" id="commentAccessRole_ALL">
+                    <label for="commentAccessRole_ALL">전체(비회원+회원+관리자)</label>
+
+                    <input type="radio" name="commentAccessRole" value="USER" id="commentAccessRole_USER">
+                    <label for="commentAccessRole_USER">회원</label>
+
+                    <input type="radio" name="commentAccessRole" value="ADMIN" id="commentAccessRole_ADMIN">
+                    <label for="commentAccessRole_ADMIN">관리자</label>
+                </td>
+            </tr>
+        </table>
     </form>
 </section>
 </html>
