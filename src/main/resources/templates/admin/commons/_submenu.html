@@ -1,0 +1,8 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <th:block th:fragment="menus">
+    <nav th:if="${submenus != null && #lists.size(submenus) > 0}">
+        <a th:each="menu : ${submenus}" th:href="@{{url}(url=${menu.url})}" th:text="${menu.name}"></a>
+    </nav>
+    </th:block>
+</html>

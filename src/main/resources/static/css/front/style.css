@@ -28,3 +28,6 @@ input[type='radio']+label { min-height: 24px; line-height: 1; padding: 3px 0 3px
 input[type='radio']:checked+label { background:url("../../images/radio-on.png") no-repeat left center; }
 
 .dn { display: none !important; }
+
+/** 기본 약관 스타일 */
+.terms { height: 200px; overflow-y: scroll; border: 1px solid #d5d5d5; padding: 10px; border-radius: 3px; word-break: break-all; }

@@ -4,22 +4,29 @@
 <head>
     <meta name="_csrf" th:content="${_csrf.token}">
     <meta name="_csrf_header" th:content="${_csrf.headerName}">
-    <title th:if="${pageTitle != null}" th:text="${pageTitle}"></title>
+    <meta name="description" th:content="${siteConfig.siteDescription}">
+    <title>
+        <th:block th:if="${pageTitle != null}" th:text="${pageTitle + ' ::'}"></th:block>
+        <th:block th:text="${siteConfig.siteTitle}"></th:block>
+    </title>
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
-    <link rel="stylesheet" type="text/css" th:href="@{/css/admin/style.css?v={v}(v=${cssJsVersion})}">
-    <link rel="stylesheet" type="text/css" th:each="file : ${addCss}" th:href="@{/css/admin/{cssFile}.css?v={v}(cssFile=${file}, v=${cssJsVersion})}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/admin/style.css?v={v}(v=${siteConfig.cssJsVersion})}">
+    <link rel="stylesheet" type="text/css" th:each="file : ${addCss}" th:href="@{/css/admin/{cssFile}.css?v={v}(cssFile=${file}, v=${siteConfig.cssJsVersion})}">
     <th:block layout:fragment="addCss"></th:block>
 
-    <script th:src="@{/js/admin/common.js?v={v}(v=${cssJsVersion})}"></script>
+    <script th:src="@{/js/admin/common.js?v={v}(v=${siteConfig.cssJsVersion})}"></script>
     <script th:each="jsFile : ${addScript}"
-            th:src="@{/js/admin/{jsFile}.js?v={v}(jsFile=${jsFile}, v=${cssJsVersion})}"></script>
+            th:src="@{/js/admin/{jsFile}.js?v={v}(jsFile=${jsFile}, v=${siteConfig.cssJsVersion})}"></script>
     <th:block layout:fragment="addScript"></th:block>
 </head>
 <body>
 <header th:replace="~{outlines/admin/header::common}"></header>
 <main>
     <aside th:replace="~{outlines/admin/side::menu}"></aside>
-    <section layout:fragment="content"></section>
+    <section>
+        <th:block th:replace="~{admin/commons/_submenu::menus}"></th:block>
+        <section layout:fragment="content"></section>
+    </section>
 </main>
 <footer th:replace="~{outlines/admin/footer::common}"></footer>
 <iframe name="ifrmProcess" class="dn"></iframe>
