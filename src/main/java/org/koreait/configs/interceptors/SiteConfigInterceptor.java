@@ -26,7 +26,7 @@ public class SiteConfigInterceptor implements HandlerInterceptor {
         /** 사이트 설정 조회 */
         Map<String, String> siteConfigs = infoService.get("siteConfig", new TypeReference<Map<String, String>>() {});
 
-        request.setAttribute("cssJsVersion", 1);
+        request.setAttribute("siteConfig", siteConfigs);
 
         return true;
     }
