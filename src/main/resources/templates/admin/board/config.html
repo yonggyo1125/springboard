@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/admin/main}">
+<section layout:fragment="content">
+    <h1 th:text="${title}"></h1>
+    <form name="frmSave" method="post" th:action="@{/admin/board/save}" autocomplete="off">
+        <h2>일반설정</h2>
+    </form>
+</section>
+</html>
