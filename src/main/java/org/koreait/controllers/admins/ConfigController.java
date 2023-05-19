@@ -1,6 +1,7 @@
 package org.koreait.controllers.admins;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.java.Log;
 import org.koreait.commons.configs.ConfigInfoService;
 import org.koreait.commons.configs.ConfigSaveService;
 import org.springframework.stereotype.Controller;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+@Log
 @Controller
 @RequestMapping("/admin/config")
 @RequiredArgsConstructor
@@ -21,7 +23,9 @@ public class ConfigController {
     @GetMapping
     public String config(Model model) {
         commonProcess(model);
+        ConfigForm configForm = infoService.get(code, ConfigForm.class);
 
+        model.addAttribute("configForm", configForm);
         return "admin/config";
     }
 
@@ -29,7 +33,7 @@ public class ConfigController {
     public String configPs(ConfigForm configForm, Model model) {
         commonProcess(model);
 
-        saveService.save("");
+        saveService.save(code, configForm);
 
         return "admin/config";
     }
