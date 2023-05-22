@@ -7,6 +7,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.koreait.commons.constants.Role;
 
+import java.util.Arrays;
+
 @Entity @Data @Builder
 @NoArgsConstructor @AllArgsConstructor
 public class Board extends BaseMemberEntity {
@@ -74,4 +76,17 @@ public class Board extends BaseMemberEntity {
     // 게시판 스킨
     @Column(length=20, nullable=false)
     private String skin = "default";
+
+    /**
+     * 게시판 분류 목록
+     *
+     * @return
+     */
+    public String[] getCategories() {
+        if (category == null) {
+            return null;
+        }
+        String[] categories = category.replaceAll("\\r", "").trim().split("\\n");
+        return categories;
+    }
 }
