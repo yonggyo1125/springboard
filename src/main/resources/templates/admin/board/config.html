@@ -151,7 +151,20 @@
             <tr>
                 <th>이미지첨부</th>
                 <td>
+                    <input type="radio" name="useAttachImage" value="true" id="useAttachImage_true">
+                    <label for="useAttachImage_true">사용</label>
+                    <input type="radio" name="useAttachImage" value="false" id="useAttachImage_false">
+                    <label for="useAttachImage_false">미사용</label>
+                </td>
+            </tr>
+            <tr>
+                <th>글작성 후 이동</th>
+                <td>
+                    <input type="radio" name="locationAfterWriting" value="view" id="locationAfterWriting_view">
+                    <label for="locationAfterWriting_view">게시글</label>
                     
+                    <input type="radio" name="locationAfterWriting" value="list" id="locationAfterWriting_list">
+                    <label for="locationAfterWriting_list">목록</label>
                 </td>
             </tr>
         </table>
