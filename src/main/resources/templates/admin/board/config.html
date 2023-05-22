@@ -211,8 +211,8 @@
         <div class="btns">
             <button type="reset">다시작성</button>
             <button type="submit">
-                <th:block th:if="*{mode != null && mode == 'update'}">등록하기</th:block>
-                <th:block th:unless="*{mode != null && mode == 'update'}">수정하기</th:block>
+                <th:block th:if="*{mode != null && mode == 'update'}">수정하기</th:block>
+                <th:block th:unless="*{mode != null && mode == 'update'}">등록하기</th:block>
             </button>
         </div>
     </form>
