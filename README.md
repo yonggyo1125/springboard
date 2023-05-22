@@ -79,8 +79,13 @@
 		- BoardData : 게시글 데이터
 		
 	- 게시판 목록
-	
+* <a href="https://drive.google.com/drive/folders/12Jz7WuVcgG7epBAe3n_JQhdJ35GS39uN?usp=share_link">동영상 강의</a>
+
+## 7일차
+* 관리자페이지 
+	- 게시판 목록 
+
 * 프론트페이지 
 	- 게시글 쓰기
 	- 파일업로드
-* <a href="https://drive.google.com/drive/folders/12Jz7WuVcgG7epBAe3n_JQhdJ35GS39uN?usp=share_link">동영상 강의</a>
+* <a href="https://drive.google.com/drive/folders/1jYTOep60XCkm0_B4M4MMkTdyKc76tgjQ?usp=share_link">동영상 강의</a>
