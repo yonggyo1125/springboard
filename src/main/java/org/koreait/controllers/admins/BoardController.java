@@ -38,7 +38,7 @@ public class BoardController {
     @GetMapping("/register")
     public String register(@ModelAttribute BoardForm boardForm, Model model) {
         commonProcess(model, "게시판 등록");
-        
+
         return "admin/board/config";
     }
 
