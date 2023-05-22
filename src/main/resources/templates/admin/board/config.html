@@ -9,7 +9,12 @@
         <table class="table-cols">
             <tr>
                 <th>게시판 ID</th>
-                <td>
+                <td th:if="*{mode != null && mode == 'update'}">
+                    <input type="hidden" name="bId" th:field="*{bId}">
+                    [[*{bId}]]
+                    <a th:href="@{/board/list/{bId}(bId=*{bId})}" target="_blank" class="sbtn">미리보기</a>
+                </td>
+                <td th:unless="*{mode != null && mode == 'update'}">
                     <input type="text" name="bId" th:field="*{bId}">
                 </td>
             </tr>
@@ -151,39 +156,39 @@
             <tr>
                 <th>이미지첨부</th>
                 <td>
-                    <input type="radio" name="useAttachImage" value="true" id="useAttachImage_true">
+                    <input type="radio" name="useAttachImage" value="true" id="useAttachImage_true" th:field="*{useAttachImage}">
                     <label for="useAttachImage_true">사용</label>
-                    <input type="radio" name="useAttachImage" value="false" id="useAttachImage_false">
+                    <input type="radio" name="useAttachImage" value="false" id="useAttachImage_false" th:field="*{useAttachImage}">
                     <label for="useAttachImage_false">미사용</label>
                 </td>
             </tr>
             <tr>
                 <th>글작성 후 이동</th>
                 <td>
-                    <input type="radio" name="locationAfterWriting" value="view" id="locationAfterWriting_view">
+                    <input type="radio" name="locationAfterWriting" value="view" id="locationAfterWriting_view" th:field="*{locationAfterWriting}">
                     <label for="locationAfterWriting_view">게시글</label>
 
-                    <input type="radio" name="locationAfterWriting" value="list" id="locationAfterWriting_list">
+                    <input type="radio" name="locationAfterWriting" value="list" id="locationAfterWriting_list" th:field="*{locationAfterWriting}">
                     <label for="locationAfterWriting_list">목록</label>
                 </td>
             </tr>
             <tr>
                 <th>답글사용</th>
                 <td>
-                    <input type="radio" name="useReply" value="true" id="useReply_true">
+                    <input type="radio" name="useReply" value="true" id="useReply_true" th:field="*{useReply}">
                     <label for="useReply_true">사용</label>
 
-                    <input type="radio" name="useReply" value="false" id="useReply_false">
+                    <input type="radio" name="useReply" value="false" id="useReply_false" th:field="*{useReply}">
                     <label for="useReply_false">미사용</label>
                 </td>
             </tr>
             <tr>
                 <th>댓글사용</th>
                 <td>
-                    <input type="radio" name="useComment" value="true" id="useComment_true">
+                    <input type="radio" name="useComment" value="true" id="useComment_true" th:field="*{useComment}">
                     <label for="useComment_true">사용</label>
 
-                    <input type="radio" name="useComment" value="false" id="useComment_false">
+                    <input type="radio" name="useComment" value="false" id="useComment_false" th:field="*{useComment}">
                     <label for="useComment_false">미사용</label>
 
                 </td>
@@ -191,17 +196,20 @@
             <tr>
                 <th>게시판 스킨</th>
                 <td>
-                    <input type="radio" name="skin" value="default" id="skin_default">
+                    <input type="radio" name="skin" value="default" id="skin_default" th:field="*{skin}">
                     <label for="skin_default">기본</label>
 
-                    <input type="radio" name="skin" value="gallery" id="skin_gallery">
+                    <input type="radio" name="skin" value="gallery" id="skin_gallery" th:field="*{skin}">
                     <label for="skin_gallery">갤러리</label>
                 </td>
             </tr>
         </table>
         <div class="btns">
             <button type="reset">다시작성</button>
-            <button type="submit">등록하기</button>
+            <button type="submit">
+                <th:block th:if="*{mode != null && mode == 'update'}">등록하기</th:block>
+                <th:block th:unless="*{mode != null && mode == 'update'}">수정하기</th:block>
+            </button>
         </div>
     </form>
 </section>
