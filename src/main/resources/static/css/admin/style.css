@@ -60,6 +60,9 @@ aside li > a.on:after { content: ''; display: block; position: absolute; width: 
 /** 기본 메세지 상자 스타일 */
 .message { box-shadow: 2px 2px 5px #36466d; padding: 15px 25px; text-align: center; background: #fff; font-size: 18px; color: #36466d; margin-bottom: 10px; border-radius: 5px; }
 
+/** 기본 에러 메세지 스타일 */
+.errors { box-shadow: 2px 2px 5px #36466d; padding: 5px 15px; background: #fff; font-size: 12px; border-radius: 3px; margin-top:5px; color: #61729e; }
+
 /** 기본 제목 스타일 */
 h1 { font-size: 30px; font-weight: bold; margin: 0; margin-bottom: 35px; line-height: 1; padding: 0; }
 h2 { font-size: 18px; font-weight: bold; margin: 25px 0 10px; line-height: 1; }
