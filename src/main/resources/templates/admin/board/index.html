@@ -3,6 +3,32 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layouts/admin/main}">
     <section layout:fragment="content">
+        <h1>게시판 검색</h1>
+        <form name="frmSearch" method="get" th:action="@{/admin/board}" autocomplete="off" th:object="${boardSearch}">
+           <table class="table-cols">
+               <tr>
+                   <th>검색어</th>
+                   <td>
+                       <div class="input_grp">
+                            <select name="sopt" th:field="*{sopt}">
+                                <option value="all">통합검색</option>
+                                <option value="bId">게시판 ID</option>
+                                <option value="bName">게시판명</option>
+                            </select>
+                           <input type="text" name="skey" th:field="*{skey}" placeholder="검색어 입력...">
+                       </div>
+                   </td>
+               </tr>
+           </table>
+            <div class="search_btn">
+                <button type="submit">조회하기</button>
+            </div>
+        </form>
+
         <h1>게시판 목록</h1>
+        <form method="post" th:action="@{/admin/board}" autocomplete="off" target="ifrmProcess">
+            <input type="hidden" name="_method" value="patch">
+
+        </form>
     </section>
 </html>

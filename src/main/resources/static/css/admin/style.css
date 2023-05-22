@@ -18,6 +18,9 @@ input[type='password'],
 input[type='email'],
 input[type='date'] { border: 1px solid #d5d5d5; width: 100%; height: 45px; padding: 0 10px; border-radius: 3px; }
 textarea { border: 1px solid #d5d5d5; width: 100%; min-height: 150px; padding: 10px; resize: none; }
+select { border: 1px solid #d5d5d5; min-width: 150px; height: 45px; }
+.input_grp { display: flex; align-items:center; }
+.input_grp > * { margin-right: 5px; }
 
 /** 기본 스타일 - 체크박스, 라디오 버튼 */
 input[type='checkbox'] { display: none; }
@@ -55,6 +58,8 @@ aside li > a.on:after { content: ''; display: block; position: absolute; width: 
 .btns > button { width: 0; flex-grow: 1; height: 50px; font-size: 18px; border: 1px solid #000; }
 .btns > button:last-of-type { background: #000; color: #fff; }
 
+.search_btn { text-align: center; margin: 20px 0 35px; }
+.search_btn button { text-align: center; height: 45px; line-height: 45px; background: #36466d; color: #fff; padding: 0 30px; border: 0; font-size: 16px; }
 
 
 /** 기본 메세지 상자 스타일 */
