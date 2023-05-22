@@ -1,14 +1,14 @@
 package org.koreait.controllers.admins;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.koreait.commons.MenuDetail;
 import org.koreait.commons.Menus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -36,8 +36,9 @@ public class BoardController {
      * @return
      */
     @GetMapping("/register")
-    public String register(Model model) {
+    public String register(@ModelAttribute BoardForm boardForm, Model model) {
         commonProcess(model, "게시판 등록");
+        
         return "admin/board/config";
     }
 
@@ -46,6 +47,15 @@ public class BoardController {
         commonProcess(model, "게시판 수정");
         
         return "admin/board/config";
+    }
+
+    @PostMapping("/save")
+    public String save(@Valid BoardForm boardForm, Errors errors, Model model) {
+        String mode = boardForm.getMode();
+        commonProcess(model, mode != null && mode.equals("update") ? "게시판 수정" : "게시판 등록");
+
+
+        return "redirect:/admin/board"; // 게시판 목록
     }
 
     private void commonProcess(Model model, String title) {

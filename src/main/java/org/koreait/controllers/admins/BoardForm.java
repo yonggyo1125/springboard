@@ -1,17 +1,21 @@
 package org.koreait.controllers.admins;
 
-import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.koreait.commons.constants.Role;
 
 @Data @Builder
 @NoArgsConstructor @AllArgsConstructor
 public class BoardForm {
+
+    private String mode; // -> update : 수정, 없으면 추가
+
+    @NotBlank
     private String bId; // 게시판 ID
 
+    @NotBlank
     private String bName; // 게시판명
 
     private boolean use; // 사용 여부
@@ -47,7 +51,6 @@ public class BoardForm {
     private boolean useAttachImage;
 
     // 글작성 후 이동
-    @Column(length=10, nullable=false)
     private String locationAfterWriting = "view";
 
     // 답글 사용 여부
@@ -57,6 +60,5 @@ public class BoardForm {
     private boolean useComment;
 
     // 게시판 스킨
-    @Column(length=20, nullable=false)
     private String skin = "default";
 }
