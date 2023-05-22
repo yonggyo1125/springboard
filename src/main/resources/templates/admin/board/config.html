@@ -162,12 +162,47 @@
                 <td>
                     <input type="radio" name="locationAfterWriting" value="view" id="locationAfterWriting_view">
                     <label for="locationAfterWriting_view">게시글</label>
-                    
+
                     <input type="radio" name="locationAfterWriting" value="list" id="locationAfterWriting_list">
                     <label for="locationAfterWriting_list">목록</label>
                 </td>
             </tr>
+            <tr>
+                <th>답글사용</th>
+                <td>
+                    <input type="radio" name="useReply" value="true" id="useReply_true">
+                    <label for="useReply_true">사용</label>
+
+                    <input type="radio" name="useReply" value="false" id="useReply_false">
+                    <label for="useReply_false">미사용</label>
+                </td>
+            </tr>
+            <tr>
+                <th>댓글사용</th>
+                <td>
+                    <input type="radio" name="useComment" value="true" id="useComment_true">
+                    <label for="useComment_true">사용</label>
+
+                    <input type="radio" name="useComment" value="false" id="useComment_false">
+                    <label for="useComment_false">미사용</label>
+
+                </td>
+            </tr>
+            <tr>
+                <th>게시판 스킨</th>
+                <td>
+                    <input type="radio" name="skin" value="default" id="skin_default">
+                    <label for="skin_default">기본</label>
+
+                    <input type="radio" name="skin" value="gallery" id="skin_gallery">
+                    <label for="skin_gallery">갤러리</label>
+                </td>
+            </tr>
         </table>
+        <div class="btns">
+            <button type="reset">다시작성</button>
+            <button type="submit">등록하기</button>
+        </div>
     </form>
 </section>
 </html>
