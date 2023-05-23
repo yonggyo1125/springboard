@@ -87,5 +87,14 @@
 
 * 프론트페이지 
 	- 게시글 쓰기
-	- 파일업로드
 * <a href="https://drive.google.com/drive/folders/1jYTOep60XCkm0_B4M4MMkTdyKc76tgjQ?usp=share_link">동영상 강의</a>
+
+## 8일차
+* 프론트페이지 
+	- 게시글 쓰기
+	- 파일업로드
+	- 게시글 보기
+	- 게시글 목록
+* <a href="https://drive.google.com/drive/folders/1OCTZ0FyKgg_svNs_H6KmSon7Z_CNa_id?usp=drive_link">동영상 강의</a>
+	
+	
