@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <th:block th:fragment="form">
+        <input th:if="${board.useAttachImage && board.useAttachFile }" type="file" id="file" class="dn">
+        <dl>
+            <dt th:text="#{board.poster}"></dt>
+            <dd>
+                <input type="text" name="poster">
+            </dd>
+        </dl>
+        <dl th:if="${board.isGuest == true}">
+            <dt th:text="#{board.password}"></dt>
+            <dd>
+                <input type="password" name="guestPw">
+            </dd>
+        </dl>
+        <dl th:if="${board.categories != null}">
+            <dt th:text="#{board.category}"></dt>
+            <dd>
+                <th:block th:each="category, status : ${board.categories}">
+                    <input type="radio" name="category" th:value="${category}"
+                           th:id="${'category_' + status.index}">
+                    <label th:for="${'category_' + status.index}" th:text="${category}"></label>
+                </th:block>
+            </dd>
+        </dl>
+        <dl>
+            <dt th:text="#{board.subject}"></dt>
+            <dd>
+                <input type="text" name="subject">
+            </dd>
+        </dl>
+        <dl>
+            <dt th:text="#{board.content}"></dt>
+            <dd>
+                <textarea name="content" id="content"></textarea>
+                <th:block th:if="${board.useEditor && board.useAttachImage}">
+                    <button type="button" class="attachFiles image" th:text="#{board.attach.image}"></button>
+                    <div class="attachedFiles images"></div>
+                </th:block>
+            </dd>
+        </dl>
+        <dl th:if="${board.useAttachFile == true}">
+            <dt th:text="#{board.attach.file}"></dt>
+            <dd>
+                <button type="button" class="attachFiles" th:text="#{board.attach.file}"></button>
+                <div class="attachedFiles files"></div>
+            </dd>
+        </dl>
+
+    </th:block>
+</html>
