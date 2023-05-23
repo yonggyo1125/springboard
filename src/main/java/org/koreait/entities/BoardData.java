@@ -13,7 +13,7 @@ public class BoardData extends BaseEntity {
     private Long id; // 게시글 번호
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="bId")
-    private String bId;
+    private Board board;
     private String gid;
     private String poster; // 작성자
     private String guestPw; // 비회원 비밀번호
