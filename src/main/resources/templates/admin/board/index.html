@@ -29,6 +29,31 @@
         <form method="post" th:action="@{/admin/board}" autocomplete="off" target="ifrmProcess">
             <input type="hidden" name="_method" value="patch">
 
+            <table class="table-rows">
+                <thead>
+                    <tr>
+                        <th>
+                            <input type="checkbox" class="checkall" id="checkall" data-target-name="bId">
+                            <label for="checkall"></label>
+                        </th>
+                        <th>게시판 ID</th>
+                        <th>게시판명</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="item, status : ${items}" th:object="${item}">
+                        <td>
+                            <input type="checkbox" name="bId" th:value="*{bId}" th:id="${'bid_' + status.index}">
+                            <label th:for="${'bid_' + status.index}"></label>
+                        </td>
+                        <td th:text="*{bId}"></td>
+                        <td th:text="*{bName}"></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+
         </form>
     </section>
 </html>
