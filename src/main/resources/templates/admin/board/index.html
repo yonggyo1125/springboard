@@ -26,7 +26,7 @@
         </form>
 
         <h1>게시판 목록</h1>
-        <form method="post" th:action="@{/admin/board}" autocomplete="off" target="ifrmProcess">
+        <form name='frmList' method="post" th:action="@{/admin/board}" autocomplete="off" target="ifrmProcess">
             <input type="hidden" name="_method" value="patch">
 
             <table class="table-rows">
@@ -43,17 +43,24 @@
                 </thead>
                 <tbody>
                     <tr th:each="item, status : ${items}" th:object="${item}">
-                        <td>
+                        <td align="center">
                             <input type="checkbox" name="bId" th:value="*{bId}" th:id="${'bid_' + status.index}">
                             <label th:for="${'bid_' + status.index}"></label>
                         </td>
-                        <td th:text="*{bId}"></td>
-                        <td th:text="*{bName}"></td>
-                        <td></td>
+                        <td align="center" th:text="*{bId}"></td>
+                        <td align="center" th:text="*{bName}"></td>
+                        <td>
+                            <a th:href="@{/admin/board/{bId}/update(bId=*{bId})}" class="sbtn">설정수정</a>
+                            <a th:href="@{/board/list/{bId}(bId=*{bId})}" class="sbtn">미리보기</a>
+                            <a th:href="@{/board/write/{bId}(bId=*{bId})}" class="sbtn blue">글쓰기</a>
+                        </td>
                     </tr>
                 </tbody>
             </table>
-
+            <div class="table-action">
+                <button type="button" class="sbtn"> 수정하기</button>
+                <button type="button" class="sbtn blue"> 삭제하기</button>
+            </div>
         </form>
     </section>
 </html>

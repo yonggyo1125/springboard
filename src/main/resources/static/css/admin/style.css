@@ -85,6 +85,8 @@ h2 { font-size: 18px; font-weight: bold; margin: 25px 0 10px; line-height: 1; }
 .table-rows th, .table-rows td { border-bottom: 1px solid #d5d5d5; border-right: 1px solid #d5d5d5; }
 .table-rows th:first-of-type, .table-rows td:first-of-type { border-left: 1px solid #d5d5d5; }
 
+.table-action { padding: 10px 0; border-bottom: 1px solid #d5d5d5; }
+
 /** 공통 서브 메뉴 */
 nav.submenus { background: #fff; box-shadow: 1px 1px 5px #cdced5; margin-bottom: 30px; display: flex; height: 60px; }
 nav.submenus a.on { background: #596b99; color: #fff; }
