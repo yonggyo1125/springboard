@@ -1,14 +1,14 @@
 package org.koreait.controllers.boards;
 
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
+import org.koreait.commons.CommonException;
 import org.koreait.entities.Board;
 import org.koreait.models.board.config.BoardConfigInfoService;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -101,6 +101,22 @@ public class BoardController {
         }
 
         // 공통 필요 속성 추가
-        
+        model.addAttribute("board", board); // 게시판 설정
+        model.addAttribute("addCss", addCss); // CSS 설정
+        model.addAttribute("addScript", addScript); // JS 설정
+
+    }
+
+    @ExceptionHandler(CommonException.class)
+    public String errorHandler(CommonException e, Model model, HttpServletResponse response) {
+        e.printStackTrace();
+
+        String message = e.getMessage();
+        HttpStatus status = e.getStatus();
+        response.setStatus(status.value());
+
+        String script = String.format("alert('%s');history.back();", message);
+        model.addAttribute("script", script);
+        return "commons/execute_script";
     }
 }

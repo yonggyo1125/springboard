@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/front/main}">
+<main layout:fragment="content">
+
+    <th:block th:if="${board.skin == 'default'}"><th:block th:replace="~{board/skins/default/list::skin}"></th:block></th:block>
+
+    <th:block th:if="${board.skin == 'gallery'}"><th:block th:replace="~{board/skins/gallery/list::skin}"></th:block></th:block>
+
+</main>
+</html>
