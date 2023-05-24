@@ -88,7 +88,7 @@ public class BoardController {
         // 작성후 이동 설정 - 목록, 글보기
         String location = board.getLocationAfterWriting();
         String url = "redirect:/board/";
-        url += location == "view" ? "view/" + boardForm.getId() : "list";
+        url += location.equals("view") ? "view/" + boardForm.getId() : "list/" + boardForm.getBId();
 
         return url;
     }
