@@ -8,12 +8,14 @@ import org.koreait.controllers.members.JoinForm;
 import org.koreait.entities.Board;
 import org.koreait.entities.Member;
 import org.koreait.models.board.BoardDataSaveService;
+import org.koreait.models.board.BoardValidationException;
 import org.koreait.models.board.config.BoardConfigInfoService;
 import org.koreait.models.board.config.BoardConfigSaveService;
 import org.koreait.models.member.MemberSaveService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.test.context.support.WithAnonymousUser;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,6 +26,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @AutoConfigureMockMvc
 @TestPropertySource(locations="classpath:application-test.properties")
 @DisplayName("게시글 등록, 수정 테스트")
+@Transactional
 public class BoardSaveTests {
 
     @Autowired
@@ -96,6 +99,91 @@ public class BoardSaveTests {
         assertDoesNotThrow(() -> {
             saveService.save(getGuestBoardForm());
         });
+    }
+    
+    @Test
+    @DisplayName("게시글 등록(회원) 성공시 예외 없음")
+    void registerMemberSuccessTest() {
+        assertDoesNotThrow(() -> {
+            saveService.save(getMemberBoardForm());
+        });
+    }
+
+
+    @Test
+    @DisplayName("필수 항목 검증(비회원) - bId, gid, poster, subject, content, guestPw, BoardValidationException이 발생")
+    @WithAnonymousUser
+    void requiredFieldsGuestTest() {
+        assertAll(
+                // bId - null
+                () -> assertThrows(BoardValidationException.class, () -> {
+                    BoardForm boardForm = getGuestBoardForm();
+                    boardForm.setBId(null);
+                    saveService.save(boardForm);
+                }),
+                // bId - 공백
+                () -> assertThrows(BoardValidationException.class, () -> {
+                    BoardForm boardForm = getGuestBoardForm();
+                    boardForm.setBId("    ");
+                    saveService.save(boardForm);
+                }),
+                // gid - null
+                () -> assertThrows(BoardValidationException.class, () -> {
+                    BoardForm boardForm = getGuestBoardForm();
+                    boardForm.setGid(null);
+                    saveService.save(boardForm);
+                }),
+                // gid - 공백
+                () -> assertThrows(BoardValidationException.class, () -> {
+                    BoardForm boardForm = getGuestBoardForm();
+                    boardForm.setGid("    ");
+                    saveService.save(boardForm);
+                }),
+                // poster - null
+                () -> assertThrows(BoardValidationException.class, () -> {
+                    BoardForm boardForm = getGuestBoardForm();
+                    boardForm.setPoster(null);
+                    saveService.save(boardForm);
+                }),
+                // poster - 공백
+                () -> assertThrows(BoardValidationException.class, () -> {
+                    BoardForm boardForm = getGuestBoardForm();
+                    boardForm.setPoster("      ");
+                    saveService.save(boardForm);
+                }),
+                // subject - null
+                () -> assertThrows(BoardValidationException.class, () -> {
+                    BoardForm boardForm = getGuestBoardForm();
+                    boardForm.setSubject(null);
+                    saveService.save(boardForm);
+                }),
+                // subject - 공백
+                () -> assertThrows(BoardValidationException.class, () -> {
+                    BoardForm boardForm = getGuestBoardForm();
+                    boardForm.setSubject("       ");
+                    saveService.save(boardForm);
+                }),
+                // content - null
+                () -> assertThrows(BoardValidationException.class, () -> {
+                    BoardForm boardForm = getGuestBoardForm();
+                    boardForm.setContent(null);
+                    saveService.save(boardForm);
+                }),
+                // content - 공백
+                () -> assertThrows(BoardValidationException.class, () -> {
+                    BoardForm boardForm = getGuestBoardForm();
+                    boardForm.setContent("     ");
+                    saveService.save(boardForm);
+                })
+
+        );
+    }
+
+    @Test
+    @DisplayName("필수 항목 검증(회원) - bId, gid, poster, subject, content, BoardValidationException 발생")
+    @WithMockUser(username="user01", password="aA!123456")
+    void requiredFieldsMemberTest() {
+
     }
 
 }
