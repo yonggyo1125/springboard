@@ -10,6 +10,7 @@ import org.koreait.entities.BoardData;
 import org.koreait.models.board.config.BoardConfigInfoService;
 import org.koreait.repositories.BoardDataRepository;
 import org.modelmapper.ModelMapper;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -21,6 +22,7 @@ public class BoardDataSaveService {
     private final BoardConfigInfoService configInfoService;
     private final BoardDataRepository repository;
     private final HttpServletRequest request;
+    private final PasswordEncoder passwordEncoder;
 
     public void save(BoardForm boardForm) {
         validator.check(boardForm);
@@ -53,7 +55,7 @@ public class BoardDataSaveService {
             if (memberUtil.isLogin()) { // 로그인 시 - 회원 데이터
                 boardData.setMember(memberUtil.getEntity());
             } else { // 비회원 비밀번호
-                boardData.setGuestPw(boardForm.getGuestPw());
+                boardData.setGuestPw(passwordEncoder.encode(boardForm.getGuestPw()));
             }
 
         } else { // 게시글 수정

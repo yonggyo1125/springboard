@@ -4,6 +4,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.koreait.commons.CommonException;
+import org.koreait.commons.MemberUtil;
 import org.koreait.entities.Board;
 import org.koreait.models.board.BoardDataSaveService;
 import org.koreait.models.board.config.BoardConfigInfoService;
@@ -23,7 +24,9 @@ public class BoardController {
 
     private final BoardConfigInfoService boardConfigInfoService;
     private final BoardDataSaveService saveService;
+    private final BoardFormValidator formValidator;
     private final HttpServletResponse response;
+    private final MemberUtil memberUtil;
 
     private Board board; // 게시판 설정
 
@@ -49,6 +52,9 @@ public class BoardController {
     public String write(@PathVariable String bId, @ModelAttribute BoardForm boardForm, Model model) {
         commonProcess(bId, "write", model);
         boardForm.setBId(bId);
+        if (memberUtil.isLogin()) {
+            boardForm.setPoster(memberUtil.getMember().getUserNm());
+        }
 
         return "board/write";
     }
@@ -70,6 +76,8 @@ public class BoardController {
         Long id = boardForm.getId();
         String mode = id == null ? "write" : "update";
         commonProcess(boardForm.getBId(), mode, model);
+
+        formValidator.validate(boardForm, errors);
 
         if (errors.hasErrors()) {
             return "board/" + mode;
