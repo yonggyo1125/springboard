@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <th:block th:fragment="skin">
-    <form name="frmSave" th:action="@{/board/save}" autocomplete="off">
-        <input type="hidden" name="bId">
-        <input type="hidden" name="gid">
+    <form name="frmSave" th:action="@{/board/save}" autocomplete="off" th:object="${boardForm}">
+        <input type="hidden" name="bId" th:field="*{bId}">
+        <input type="hidden" name="gid" th:field="*{gid}">
         <th:block th:replace="~{board/skins/default/_form::form}"></th:block>
         <div class="btns">
             <button type="reset" th:text="#{board.reset}"></button>

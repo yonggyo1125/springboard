@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <th:block th:fragment="form">
+    <th:block th:fragment="form" th:object="${boardForm}">
+        <div class="errors global" th:each="err : ${#fields.globalErrors()}" th:text="${err}"></div>
         <input th:if="${board.useAttachImage && board.useAttachFile }" type="file" id="file" class="dn">
         <dl>
             <dt th:text="#{board.poster}"></dt>
             <dd>
-                <input type="text" name="poster">
+                <input type="text" name="poster" th:field="*{poster}">
+                <div class="errors" th:each="err : ${#fields.errors('poster')}" th:text="${err}"></div>
             </dd>
         </dl>
         <dl th:if="${board.isGuest == true}">
             <dt th:text="#{board.password}"></dt>
             <dd>
-                <input type="password" name="guestPw">
+                <input type="password" name="guestPw" th:field="*{guestPw}">
+                <div class="errors" th:each="err : ${#fields.errors('guestPw')}" th:text="${err}"></div>
             </dd>
         </dl>
         <dl th:if="${board.categories != null}">
@@ -27,13 +30,17 @@
         <dl>
             <dt th:text="#{board.subject}"></dt>
             <dd>
-                <input type="text" name="subject">
+                <input type="text" name="subject" th:field="*{subject}">
+                <div class="errors" th:each="err : ${#fields.errors('subject')}" th:text="${err}"></div>
             </dd>
         </dl>
         <dl>
             <dt th:text="#{board.content}"></dt>
             <dd>
-                <textarea name="content" id="content"></textarea>
+                <textarea name="content" id="content" th:field="*{content}"></textarea>
+
+                <div class="errors" th:each="err : ${#fields.errors('content')}" th:text="${err}"></div>
+
                 <th:block th:if="${board.useEditor && board.useAttachImage}">
                     <button type="button" class="attachFiles image" th:text="#{board.attach.image}"></button>
                     <div class="attachedFiles images"></div>
