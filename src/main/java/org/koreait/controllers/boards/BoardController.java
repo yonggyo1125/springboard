@@ -1,6 +1,7 @@
 package org.koreait.controllers.boards;
 
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.koreait.commons.CommonException;
 import org.koreait.entities.Board;
@@ -8,6 +9,7 @@ import org.koreait.models.board.config.BoardConfigInfoService;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -58,8 +60,10 @@ public class BoardController {
     }
 
     @PostMapping("/save")
-    public String save(Model model) {
-        //commonProcess(bId, "write", model);
+    public String save(@Valid BoardForm boardForm, Errors errors, Model model) {
+        Long id = boardForm.getId();
+        commonProcess(boardForm.getBId(), id == null ? "update" : "write", model);
+
         return null;
     }
 
