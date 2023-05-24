@@ -177,28 +177,37 @@ public class BoardSaveTests {
     }
 
     @Test
-    @DisplayName("필수 항목 검증(비회원) - bId, gid, poster, subject, content, guestPw, BoardValidationException이 발생")
+    @DisplayName("필수 항목 검증(비회원) - bId, gid, poster, subject, content, guestPw(자리수는 6자리 이상), BoardValidationException이 발생")
     @WithAnonymousUser
     void requiredFieldsGuestTest() {
         commonRequiredFieldsTest();
 
-        assertThrows(BoardValidationException.class, () -> {
-            BoardForm boardForm = getGuestBoardForm();
-            boardForm.setGuestPw(null);
-            saveService.save(boardForm);
-        });
+        assertAll(
+                () -> assertThrows(BoardValidationException.class, () -> {
+                    BoardForm boardForm = getGuestBoardForm();
+                    boardForm.setGuestPw(null);
+                    saveService.save(boardForm);
+                }),
+                () -> assertThrows(BoardValidationException.class, () -> {
+                    BoardForm boardForm = getGuestBoardForm();
+                    boardForm.setGuestPw("   ");
+                    saveService.save(boardForm);
+                }),
+                () -> assertThrows(BoardValidationException.class, () -> {
+                    BoardForm boardForm = getGuestBoardForm();
+                    boardForm.setGuestPw("1234");
+                    saveService.save(boardForm);
+                })
+        );
 
-        assertThrows(BoardValidationException.class, () -> {
-            BoardForm boardForm = getGuestBoardForm();
-            boardForm.setGuestPw("   ");
-            saveService.save(boardForm);
-        });
+
     }
 
     @Test
     @DisplayName("필수 항목 검증(회원) - bId, gid, poster, subject, content, BoardValidationException 발생")
     @WithMockUser(username="user01", password="aA!123456")
     void requiredFieldsMemberTest() {
+
         commonRequiredFieldsTest();
     }
 
