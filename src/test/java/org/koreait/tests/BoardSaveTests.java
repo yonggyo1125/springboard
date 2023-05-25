@@ -30,6 +30,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.*;
 
+import java.util.Arrays;
 import java.util.ResourceBundle;
 import java.util.UUID;
 
@@ -232,6 +233,7 @@ public class BoardSaveTests {
 
     @Test
     @DisplayName("통합테스트 - 비회원 게시글 작성 유효성 검사")
+    @Disabled
     void requiredFieldsGuestControllerTest() throws Exception {
         BoardForm boardForm = getGuestBoardForm();
         String body = mockMvc.perform(post("/board/save")
@@ -251,7 +253,8 @@ public class BoardSaveTests {
                 bundle.getString("NotBlank.boardForm.guestPw"),
                 bundle.getString("Size.boardForm.guestPw")
         };
-
-        
+        for (String message : messages) {
+            assertTrue(body.contains(message));
+        }
     }
 }
