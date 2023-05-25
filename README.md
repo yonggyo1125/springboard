@@ -102,3 +102,10 @@
 	- 파일업로드
 	
 * <a href="https://drive.google.com/drive/folders/1PX33O0f1cMDI3IuaUuM1LPGKwpxHFKq9?usp=drive_link">동영상 강의</a>
+
+## 10일차 
+* 프론트페이지 
+	-게시글 보기
+	- 파일업로드
+	
+* <a href="https://drive.google.com/drive/folders/1nRs2vpJZgz-EA9v4tg-xSyI6AdpkKZ1y?usp=drive_link">동영상 강의</a>
