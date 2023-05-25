@@ -13,6 +13,7 @@ public class BoardDataInfoService {
 
     public BoardData get(Long id) {
 
+        BoardData boardData = boardDataRepository.findById(id).orElseThrow(BoardDataNotExistsException::new);
 
 
         return null;
