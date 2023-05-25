@@ -23,24 +23,29 @@ public class ConfigInfoService {
     }
 
     public <T> T get(String code, Class<T> clazz, TypeReference<T> typeReference) {
-        Configs configs = repository.findById(code).orElse(null);
-        if (configs == null || configs.getValue() == null || configs.getValue().isBlank()) {
+        try {
+            Configs configs = repository.findById(code).orElse(null);
+            if (configs == null || configs.getValue() == null || configs.getValue().isBlank()) {
+                return null;
+            }
+
+            String value = configs.getValue();
+
+            ObjectMapper om = new ObjectMapper();
+            T data = null;
+            try {
+
+                if (clazz == null) data = om.readValue(value, typeReference);
+                else data = om.readValue(value, clazz);
+
+            } catch (JsonProcessingException e) {
+                e.printStackTrace();
+            }
+
+            return data;
+        } catch (Exception e) {
+            //e.printStackTrace();
             return null;
         }
-
-        String value = configs.getValue();
-
-        ObjectMapper om = new ObjectMapper();
-        T data = null;
-        try {
-
-            if (clazz == null) data = om.readValue(value, typeReference);
-            else data = om.readValue(value, clazz);
-
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-        }
-
-        return data;
     }
 }

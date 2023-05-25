@@ -66,9 +66,6 @@ public class BoardSaveTests {
     @BeforeEach
     @Transactional
     void init() {
-        // 사이트 설정 등록
-        siteConfigSaveService.save("siteConfig", new ConfigForm());
-
         // 게시판 설정 추가
         org.koreait.controllers.admins.BoardForm boardForm = new org.koreait.controllers.admins.BoardForm();
         boardForm.setBId("freetalk1000");
@@ -234,7 +231,6 @@ public class BoardSaveTests {
 
     @Test
     @DisplayName("통합테스트 - 비회원 게시글 작성 유효성 검사")
-    @Disabled
     void requiredFieldsGuestControllerTest() throws Exception {
         BoardForm boardForm = getGuestBoardForm();
         mockMvc.perform(post("/board/save")
