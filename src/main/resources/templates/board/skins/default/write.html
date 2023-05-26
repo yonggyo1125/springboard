@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <th:block th:fragment="skin">
+    <th:block th:replace="~{board/skins/default/_board_title::title}"></th:block>
     <form name="frmSave" method="post" th:action="@{/board/save}" autocomplete="off" th:object="${boardForm}">
         <input type="hidden" name="bId" th:field="*{bId}">
         <input type="hidden" name="gid" th:field="*{gid}">

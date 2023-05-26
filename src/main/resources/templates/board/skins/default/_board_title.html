@@ -1,0 +1,8 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <th:block th:fragment="title">
+        <h1 th:if="${board != null}">
+            <a th:href="@{/board/list/{bId}(bId=${board.bId})}" th:text="${board.bName}"></a>
+        </h1>
+    </th:block>
+</html>

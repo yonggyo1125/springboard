@@ -1,6 +1,30 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <th:block th:fragment="skin">
-    기본 스킨
+    <th:block th:replace="~{board/skins/default/_board_title::title}"></th:block>
+    <div class="board_view" th:object="${boardData}">
+        <div class="subject" th:text="*{subject}"></div>
+        <div class="post_info">
+            <div class="left">
+                [[#{board.poster}]] : [[*{poster}]]
+                <th:block th:if="*{member != null}" th:text="*{'(' + member.userId + ')'}"></th:block>
+                / [[#{board.datetime}]] : [[*{#temporals.format(createdAt, 'yyyy.MM.dd HH:mm')}]]
+            </div>
+            <div class="right">
+                [[#{board.hit}]] :
+                <th:block th:if="*{hit < 1000}" th:text="*{hit}"></th:block>
+                <th:block th:unless="*{hit < 1000}" th:text="*{#numbers.formatInteger(hit, 3)}"></th:block>
+                / IP : [[*{ip}]]
+            </div>
+        </div> <!--// post_info -->
+        <div class="content" th:utext="*{content}"></div>
+        <div class="btns">
+            <a th:href="@{/board/update/(id=*{id})}" th:text="#{board.update}"></a>
+            <a th:href="@{/board/delete/(id=*{id})}" th:text="#{board.delete}"></a>
+            <a th:href="@{/board/write/(bId=*{board.bId})}" th:text="#{board.write}"></a>
+            <a th:if="${board.useReply == true}" th:href="@{/board/reply/(id=*{id})}" th:text="#{board.reply}"></a>
+            <a th:href="@{/board/list/(bId=*{board.bId})}" th:text="#{board.list}"></a>
+        </div>
+    </div> <!--// board_view -->
 </th:block>
 </html>
