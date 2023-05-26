@@ -36,7 +36,7 @@
             </div>
 
             <div>
-                <pre class="terms" th:text="${siteConfig.joinTerms}"></pre>
+                <pre class="terms" th:text="${@siteConf.get('joinTerms')}"></pre>
                 <input type="checkbox" name="agrees" value="true" id="agrees">
                 <label for="agrees" th:text="#{member.terms.agree}"></label>
             </div>
