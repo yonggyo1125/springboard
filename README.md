@@ -108,6 +108,10 @@
 	- 게시글 보기
 	- 조회수 구현
 		- IP + 브라우저 정보(UserAgent) + 회원번호(없으면 비회원, 있으면 회원) -> hashcode -> Objects.hashcode
-	- 파일업로드
 	
 * <a href="https://drive.google.com/drive/folders/1nRs2vpJZgz-EA9v4tg-xSyI6AdpkKZ1y?usp=drive_link">동영상 강의</a>
+
+## 11일차
+* 프론트페이지 
+	- 조회수 구현
+* <a href="https://drive.google.com/drive/folders/1_oiiVUbebTtmN1minI1yiR51cSxK8gl6?usp=drive_link">동영상 강의</a>
