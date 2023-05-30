@@ -71,7 +71,11 @@ public class BoardController {
      */
     @GetMapping("/{id}/update")
     public String update(@PathVariable Long id, Model model) {
-        commonProcess(null, "update", model);
+        BoardData boardData = infoService.get(id, "update");
+        Board board = boardData.getBoard();
+        commonProcess(board.getBId(), "update", model);
+
+
 
         return "board/update";
     }

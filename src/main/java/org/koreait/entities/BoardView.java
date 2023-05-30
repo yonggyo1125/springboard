@@ -10,6 +10,6 @@ public class BoardView {
     private Long id; // 게시글 번호
 
     @Id
-    @Column(length=40)
+    @Column(length=40, name="uid_")
     private String uid; // IP + UA + 회원번호
 }
