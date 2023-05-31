@@ -11,6 +11,7 @@ import org.koreait.models.board.BoardDataInfoService;
 import org.koreait.models.board.BoardDataSaveService;
 import org.koreait.models.board.UpdateHitService;
 import org.koreait.models.board.config.BoardConfigInfoService;
+import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -75,7 +76,14 @@ public class BoardController {
         Board board = boardData.getBoard();
         commonProcess(board.getBId(), "update", model);
 
+        // 수정 권한 체크
 
+        BoardForm boardForm = new ModelMapper().map(boardData, BoardForm.class);
+        if (boardData.getMember() != null) {
+            boardForm.setUserNo(boardData.getMember().getUserNo());
+        }
+        
+        model.addAttribute("boardForm", boardForm);
 
         return "board/update";
     }
@@ -89,6 +97,7 @@ public class BoardController {
         formValidator.validate(boardForm, errors);
 
         if (errors.hasErrors()) {
+            errors.getAllErrors().forEach(System.out::println);
             return "board/" + mode;
         }
 

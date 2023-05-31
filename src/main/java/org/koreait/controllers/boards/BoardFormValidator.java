@@ -21,7 +21,11 @@ public class BoardFormValidator implements Validator {
     public void validate(Object target, Errors errors) {
         BoardForm boardForm = (BoardForm)target;
         /** 비회원 비밀번호 체크 S */
-        if (!memberUtil.isLogin()) {
+        Long id = boardForm.getId();
+        Long userNo = boardForm.getUserNo();
+            
+        if ((id == null && !memberUtil.isLogin()) // 글 작성시 비회원  
+                || (id != null && userNo == null)) { // 글 수정시 비회원
             String guestPw = boardForm.getGuestPw();
             if (guestPw == null || guestPw.isBlank()) {
                 errors.rejectValue("guestPw", "NotBlank");
