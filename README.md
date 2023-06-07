@@ -114,6 +114,6 @@
 ## 11일차
 * 프론트페이지 
 	- 조회수 구현
-    - 게시글 수정 
-    	- 관리자 - 가능, 회원 - 동일 회원, 비회원 - 비밀번호 인증 성공(세션에 기록)
+    - 게시글 수정, 게시글 삭제
+		- 관리자 - 가능, 회원 - 동일 회원, 비회원 - 비밀번호 인증 성공(세션에 기록)
 * <a href="https://drive.google.com/drive/folders/1_oiiVUbebTtmN1minI1yiR51cSxK8gl6?usp=drive_link">동영상 강의</a>

@@ -8,6 +8,6 @@ import org.springframework.http.HttpStatus;
  */
 public class GuestPasswordNotCheckedException extends CommonException {
     public GuestPasswordNotCheckedException() {
-        super("GuestPw.notChecked", HttpStatus.UNAUTHORIZED);
+        super(bundleValidation.getString("GuestPw.notChecked"), HttpStatus.UNAUTHORIZED);
     }
 }

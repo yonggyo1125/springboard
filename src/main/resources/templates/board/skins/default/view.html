@@ -20,7 +20,7 @@
         <div class="content" th:utext="*{content}"></div>
         <div class="btns">
             <a th:href="@{/board/{id}/update(id=*{id})}" th:text="#{board.update}"></a>
-            <a th:href="@{/board/delete/{id}(id=*{id})}" th:text="#{board.delete}"></a>
+            <a th:href="@{/board/delete/{id}(id=*{id})}" th:text="#{board.delete}" onclick="return confirm('정말 삭제 하시겠습니까?');"></a>
             <a th:href="@{/board/write/{bId}(bId=*{board.bId})}" th:text="#{board.write}"></a>
             <a th:if="${board.useReply == true}" th:href="@{/board/reply/(id=*{id})}" th:text="#{board.reply}"></a>
             <a th:href="@{/board/list/{bId}(bId=*{board.bId})}" th:text="#{board.list}"></a>
