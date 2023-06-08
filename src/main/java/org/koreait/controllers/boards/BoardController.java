@@ -221,6 +221,7 @@ public class BoardController {
             if (board.isUseEditor()) { // 에디터 사용 경우
                 addScript.add("ckeditor/ckeditor");
             }
+            addScript.add("fileManager");
             addScript.add("board/form");
         }
 
